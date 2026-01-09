@@ -1,9 +1,16 @@
+/* 폰트 설정 */
 @font-face {
     font-family: 'BMKkubulim';
     src: url('./ttf/BMKkubulimTTF.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
+
+/* 기본 레이아웃 설정 */
+* {
+    box-sizing: border-box;
+}
+
 body {
     background: #f7f7f7;
     font-family: 'BMKkubulim', cursive;
@@ -11,128 +18,131 @@ body {
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
+    margin: 0;
+    padding: 20px;
 }
+
+/* 메인 컨테이너 */
 .todo-container {
     background: #fff;
     margin-top: 60px;
     padding: 40px 30px 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
-    min-width: 340px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
     width: 100%;
     max-width: 400px;
-    font-family: 'BMKkubulim', cursive;
 }
+
 .todo-container h1 {
     text-align: center;
     margin-bottom: 35px;
     color: #222;
-    font-size: 2.25rem;
-    font-weight: 600;
-    font-family: 'BMKkubulim', cursive;
+    font-size: 2.2rem;
+    font-weight: 500; /* 제목 두께도 살짝 조절 */
     letter-spacing: 0.05em;
 }
+
+/* 입력 영역 */
 .todo-input-area {
     display: flex;
     gap: 10px;
     margin-bottom: 25px;
 }
+
 .todo-input {
     flex: 1;
-    padding: 10px;
+    padding: 12px 15px;
     border-radius: 8px;
     border: 1px solid #ddd;
-    font-size: 1.4rem;
+    font-size: 1.45rem;
+    font-weight: 300;
+    00; /* 기존보다 100 낮춤 (보통 400->300) */
     font-family: 'BMKkubulim', cursive;
+    width: 0;
 }
+
 .add-btn {
     padding: 10px 20px;
     border: none;
     border-radius: 8px;
     background: lemonchiffon;
-    color: #fff;
-    font-weight: 400;
+    color: #555;
     font-size: 1.5rem;
     cursor: pointer;
-    opacity: 1;
-    font-family: 'BMKkubulim', cursive;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.add-btn:disabled {
-    cursor: not-allowed;
-    opacity: 0.65;
-}
+
+/* 리스트 아이템 */
 .todo-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
+
 .todo-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 0;
+    padding: 15px 0;
     border-bottom: 1px solid #eee;
 }
-.todo-item:last-child {
-    border-bottom: none;
-}
+
 .todo-text {
-    font-size: 1.4rem;
-    font-weight: 300;
+    flex: 1;
+    font-size: 1.45rem;
+    font-weight: 300; /* 기존보다 100 낮춤 */
     margin-left: 12px;
+    word-break: break-all;
     transition: color 0.2s;
-    font-family: 'BMKkubulim', cursive;
+    line-height: 1.4;
 }
+
 .todo-text.done {
     text-decoration: line-through;
     color: #aaa;
 }
+
+/* 삭제 버튼 (아이콘 위치 조정) */
 .delete-btn {
-    padding: 0;
     background: #fff;
     border: 1.5px solid #D9D9D9;
-    border-radius: 100%;
-    width: 22px;
-    height: 22px;
-    color: #D9D9D9;
-    font-size: 12px;
-    margin-left: 14px;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    cursor: pointer;
-    opacity: 1;
-    transition: box-shadow 0.2s;
-    font-family: 'BMKkubulim', cursive;
+    flex-shrink: 0;
+    
+    /* 아이콘을 미세하게 아래로 내림 */
+    transform: translateY(1px); 
 }
-.delete-btn .icon-del {
-    font-size: 16px;
-    font-family: inherit;
+
+.icon-del {
     color: #D9D9D9;
-    pointer-events: none;
-    display: block;
-    line-height: 1;
+    font-size: 16px;
     font-weight: bold;
+    /* 버튼 안에서 한 번 더 미세 조정이 필요할 때 */
+    position: relative;
+    top: 1px; 
 }
-.delete-btn:active {
-    box-shadow: 0 2px 4px #ededed;
-}
-.delete-btn:disabled {
-    cursor: not-allowed;
-    opacity: 0.7;
-}
-.edit-input {
-    border: 1.5px solid lemonchiffon;
-    border-radius: 7px;
-    padding: 7px 8px;
-    font-size: 1.01rem;
-    width: 145px;
-    margin-left: 10px;
-    outline: none;
-    transition: border 0.15s;
-    font-family: 'BMKkubulim', cursive;
-}
-.edit-input:focus {
-    border: 2px solid lemonchiffon
-}
+
+/* --- 모바일 반응형 추가 --- */
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+
+    .todo-container {
+        margin-top: 30px;
+        padding: 30px 20px;
+    }
+
+    .todo-input {
+        font-size: 1.45rem;
+        font-weight: 300; /* 모바일 두께 낮춤 */
+    }
