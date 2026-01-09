@@ -119,7 +119,7 @@ body {
     flex-shrink: 0;
     
     /* 아이콘을 미세하게 아래로 내림 */
-    transform: translateY(1px); 
+    
 }
 
 .icon-del {
