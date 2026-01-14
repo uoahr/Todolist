@@ -68,8 +68,8 @@ body {
     padding: 10px 20px;
     border: none;
     border-radius: 8px;
-    background: #D5E5D5;
-    color: #D5E5D5 !important;
+    background: #C6E7FF;
+    color: #C6E7FF !important;
     font-size: 1.5rem;
     cursor: pointer;
     transition: background 0.2s;
@@ -79,7 +79,7 @@ body {
 }
 
 .add-btn:hover {
-    background: #EEF1DA;
+    background: #C6E7FF
 }
 
 /* 5. 리스트 아이템 */
