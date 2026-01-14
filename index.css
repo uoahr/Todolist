@@ -1,30 +1,31 @@
-/* 1. 웹폰트 안전장치 (파일이 없을 경우를 대비해 배민 서버에서 직접 가져옴) */
+/* 1. 웹폰트 설정 (안전장치 포함) */
 @import url('https://cdn.jsdelivr.net/gh/webfontworld/baemin/BMKkubulim.css');
 
 @font-face {
-    font-family: 'BMKkubulim';
-    src: url('./ttf/BMKkubulimTTF.ttf') format('truetype');
+    font-family: '메모먼트';
+    src: url('MemomentKkukkukk.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
-/* 기본 레이아웃 설정 */
+/* 2. 기본 레이아웃 및 초기화 */
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     background: #f7f7f7;
-    font-family: 'BMKkubulim', cursive;
+    font-family: '메모먼트', sans-serif;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
-    margin: 0;
     padding: 20px;
 }
 
-/* 메인 컨테이너 */
+/* 3. 메인 컨테이너 */
 .todo-container {
     background: #fff;
     margin-top: 60px;
@@ -44,7 +45,7 @@ body {
     letter-spacing: 0.05em;
 }
 
-/* 입력 영역 */
+/* 4. 입력 영역 */
 .todo-input-area {
     display: flex;
     gap: 10px;
@@ -57,8 +58,8 @@ body {
     border-radius: 8px;
     border: 1px solid #ddd;
     font-size: 1.45rem;
-    font-weight: 300; /* 얇게 조정 */
-    font-family: 'BMKkubulim', cursive;
+    font-weight: 300;
+    font-family: '메모먼트', sans-serif;
     width: 0;
     outline: none;
 }
@@ -67,8 +68,8 @@ body {
     padding: 10px 20px;
     border: none;
     border-radius: 8px;
-    background: lemonchiffon;
-    color: #555;
+    background: #D5E5D5;
+    color: #D5E5D5 !important;
     font-size: 1.5rem;
     cursor: pointer;
     transition: background 0.2s;
@@ -77,11 +78,13 @@ body {
     justify-content: center;
 }
 
-/* 리스트 아이템 */
+.add-btn:hover {
+    background: #EEF1DA;
+}
+
+/* 5. 리스트 아이템 */
 .todo-list {
     list-style: none;
-    padding: 0;
-    margin: 0;
 }
 
 .todo-item {
@@ -95,7 +98,7 @@ body {
 .todo-text {
     flex: 1;
     font-size: 1.45rem;
-    font-weight: 300; /* 얇게 조정 */
+    font-weight: 300;
     margin-left: 12px;
     word-break: break-all;
     transition: color 0.2s;
@@ -107,11 +110,12 @@ body {
     color: #aaa;
 }
 
-/* 삭제 버튼 (아이콘 위치 원래대로 복구) */
+/* 6. 삭제 버튼 (중요: 동그라미 고정) */
 .delete-btn {
     background: #fff;
     border: 1.5px solid #D9D9D9;
-    border-radius: 50%;
+    border-radius: 50% !important;
+    /* 강제로 동그랗게 */
     width: 28px;
     height: 28px;
     cursor: pointer;
@@ -119,17 +123,20 @@ body {
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    /* 위치 조정값 모두 제거 */
+    padding: 0;
 }
 
 .icon-del {
     color: #D9D9D9;
     font-size: 16px;
     font-weight: bold;
-    /* 위치 조정값 제거 */
+    display: block;
+    line-height: 1;
+    transform: translateY(-1px);
+    /* 아이콘 미세 위로 조정 */
 }
 
-/* --- 모바일 반응형 추가 --- */
+/* 7. 모바일 반응형 추가 (480px 이하) */
 @media (max-width: 480px) {
     body {
         padding: 15px;
@@ -140,13 +147,21 @@ body {
         padding: 30px 20px;
     }
 
-    .todo-input, .todo-text {
+    .todo-input,
+    .todo-text {
         font-size: 1.45rem;
         font-weight: 300;
     }
 
+    /* 모바일 버튼 크기 및 형태 유지 */
     .delete-btn {
-        width: 30px;
-        height: 30px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50% !important;
+    }
+
+    /* 모바일 아이콘 위치 미세조정 */
+    .icon-del {
+        transform: translateY(-1.5px);
     }
 }
